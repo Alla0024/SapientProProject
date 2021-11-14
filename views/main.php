@@ -5,4 +5,7 @@
                 <h1 class="intro__title">Ласкаво просимо до онлайн школи </h1>
 
                 <a class="btn" href="#">Дізнатися більше</a>
-            </div>
+            </div> 
+        
+        </div>
+</div>

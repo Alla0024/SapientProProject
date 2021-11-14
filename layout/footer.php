@@ -1,4 +1,5 @@
-</div>
+</a>
+<footer>
         <div class="slider">
             <div class="container">
                 <div class="slider__inner">
@@ -22,7 +23,7 @@
                 </div>
             </div>
         </div>
-    </div>
+</footer>
 </body>
 
 </html>

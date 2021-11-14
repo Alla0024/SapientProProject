@@ -6,3 +6,5 @@
 
                 <div class="btn"><a class="nav__link" href="index.php?action=main">На головну</div>
             </div>
+        </div>
+</div>
