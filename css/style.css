@@ -375,3 +375,15 @@ transition: opacity .1s linear;
         text-align: center;
         line-height: 1;
        }
+       /*---------------------------------------*/
+      
+     
+       .container3 {
+        width:400px;
+        height: 450px;
+        background-color: #643915;
+        margin: 15px auto 0 auto;
+        text-align: center;
+        box-shadow: 0 -30px 0 #b99052;  
+       }
+      

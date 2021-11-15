@@ -3,25 +3,22 @@ if (isset($_POST['submit'])) {
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    $hash = getUserByLogin($username);
+    $hash = User::getUserByLogin($username);
 
-    if (password_verify($password, $hash['password'])) {
+    if (password_verify($password, $hash['password']) && ($hash['login_attempts'] < 5 || time() - $hash['last_login_attemps'] > 300)) {
 
         $_SESSION['Logged'] = 1;
         $_SESSION['username'] = $username;
         $_SESSION["id"] = $hash['id'];
         //echo "Success!";
+        User::updateUserLoginAttempts(-1, $hash['login'], time(), $mysqli);
         require_once("views/main.php");
         exit();
     } else {
-        $stmt = $mysqli->prepare("UPDATE `users`    SET `login_attempts`=?, `last_login_attemps`=? WHERE `login`=?");
+        User::updateUserLoginAttempts($hash['login_attempts'], $hash['login'], time(), $mysqli);
 
-        $currentDate = time();
-        $hash['login_attempts']++;
-
-        $stmt->bind_param('sss', $hash['login_attempts'], $currentDate, $hash['login']);
-        $stmt->execute();
-        if ($hash['login_attempts'] > 5) {
+        $user = User:: getUserLoginAttempts($hash['login'],  $mysqli);
+        if ($user['login_attempts'] > 4) {
             echo "Повторіть спроби через 5 хвилин!";
         } else {
             echo "INVALID USERNAME/PASSWORD Combination!";
