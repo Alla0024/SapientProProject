@@ -386,4 +386,27 @@ transition: opacity .1s linear;
         text-align: center;
         box-shadow: 0 -30px 0 #b99052;  
        }
+      /*------------------------------------*/
+      .table {
+          font-family: Roboto, sans-serif;
+          font-size: 18px;
+          text-align: center;
+          border-collapse: collapse;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+      }
+    th{
+          font-weight: bold;
+          background-color: #5c401d ;
+          padding: 15px 35 px;
+          color: #fff;
+      }
+      td{
+        font-weight: bold;
+        background-color:#fff ;
+        padding: 15px 35 px;
+        color:#382a0a;
+    }
       

@@ -2,6 +2,7 @@
 if (isset($_POST['submit'])) {
     $username = isset($_POST['username']) ? $_POST['username'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
+    $is_admin = User::isAdmin($username, $mysqli);
 
     $hash = User::getUserByLogin($username);
 
@@ -9,6 +10,7 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['Logged'] = 1;
         $_SESSION['username'] = $username;
+        $_SESSION['is_admin'] = $is_admin;
         $_SESSION["id"] = $hash['id'];
         //echo "Success!";
         User::updateUserLoginAttempts(-1, $hash['login'], time(), $mysqli);

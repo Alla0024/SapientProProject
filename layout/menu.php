@@ -8,7 +8,10 @@
                 <a class="nav__link" href="index.php?action=registration">Реєстрація</a>
 
 
-                <a class="nav__link" href="index.php?action=services">Послуги</a>
+                <a class="nav__link" href="index.php?action=bids">Заявка</a>
+                <?php if (isset($_SESSION["Logged"]) && $_SESSION['is_admin']['admin'] == 1) { ?>
+                    <a class="nav__link" href="index.php?action=grups">Керування заявками</a>
+                <?php } ?>
                 <?php
                 if (isset($_SESSION["Logged"])) {
                 ?>
