@@ -3,11 +3,11 @@
         <table>
             <tr>
                 <th>ID</th>
-                <th>клас</th>
-                <th>форма навчання</th>
-                <th>предмет</th>
-                <th>бажаний час</th>
-                <th>інші побажання</th>
+                <th>Клас</th>
+                <th>Форма навчання</th>
+                <th>Предмет</th>
+                <th>Бажаний час</th>
+                <th>Інші побажання</th>
                 <th>Редагувати</th>
                 <th>Видалити</th>
             </tr>
@@ -23,7 +23,7 @@
                     <td><?php echo $bid[4]; ?></td>
                     <td><?php echo $bid[5]; ?></td>
                     <td><i class="fas fa-pen-alt"></i></td>
-                    <td style="text-align: center;"><i class="fas fa-trash-alt"></i></td>
+                    <td><i class="fas fa-trash-alt"></i></td>
                 </tr>
             <?php } ?>
         </table>

@@ -5,6 +5,7 @@
 
             <nav class="nav">
                 <a class="nav__link" href="index.php?action=about">Про нас</a>
+                <a class="nav__link" href="index.php?action=all-groups">Групи</a>
                 <a class="nav__link" href="index.php?action=registration">Реєстрація</a>
 
 

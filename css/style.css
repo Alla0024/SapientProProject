@@ -376,7 +376,7 @@ transition: opacity .1s linear;
         line-height: 1;
        }
        /*---------------------------------------*/
-      
+       
      
        .container3 {
         width:400px;
@@ -408,5 +408,19 @@ transition: opacity .1s linear;
         background-color:#fff ;
         padding: 15px 35 px;
         color:#382a0a;
+        text-align: center;
     }
-      
+
+    /* bootstrap own colors */
+    .container {
+        margin-bottom: 50px !important;
+    }
+    .card { 
+        background-color: rgb(180, 108, 61) !important;
+        margin-top: 30px;
+    }
+
+    .btn-primary {
+        background-color: rgb(56, 37, 8) !important;
+    }
+    /* -------------------- */
