@@ -1,56 +1,23 @@
-<div class="login">
-    <div class="containr">
-        <div class="row">
-            <div class="col col-sm-12 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="images/err.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="index.php?action=bids" class="btn btn-primary">Записатися</a>
-                    </div>
+<div class="login2 ">
+    <div class="row">
+        <?php
+        $klas = Bid::getAllClass();
+        foreach ($klas as $elem) {
+        ?>
+            <div class="card col-md-1" style="width: 18rem;">
+                <img src="images/grup.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                        <h5 class="card-title"> <?= $elem['class'] ?> </h5>
+                        <p class="card-text"> <?= $elem['description'] ?> </p>
+                    <a href="index.php?action=bid-detail&class-id=<?= $elem['id'] ?>"> Детально </a>
+                    <br>
+                    <a href="index.php?action=bids&class-id=<?= $elem['id'] ?>&class-name=<?= $elem['class'] ?>" class="btn btn-primary">Записатися</a>
                 </div>
             </div>
-            <div class="col col-sm-12 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="index.php?action=bids" class="btn btn-primary">Записатися</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-sm-12 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="index.php?action=bids" class="btn btn-primary">Записатися</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-sm-12 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="index.php?action=bids" class="btn btn-primary">Записатися</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-sm-12 col-md-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="images/err.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="index.php?action=bids" class="btn btn-primary">Записатися</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php } ?>
     </div>
-</div>
+    <br>
+    <br>
+    <?php
+    require_once("layout/footer.php"); ?>
+    </body>

@@ -1,25 +1,22 @@
 </a>
 <footer>
-        <div class="slider">
-            <div class="container">
-                <div class="slider__inner">
-
+         <div class="container row">
+            <div class="slider__inner">
                     <div class="slider__item">
                         <span class="slider__num">01</span>
-                        Про нас
+                        <a style="text-decoration: none; color:white;" href="index.php?action=about">Про нас</a>
                     </div>
-                    <div class="slider__item">
-                        <span class="slider__num">02</span>
-                        Послуги
-                    </div>
-                    <div class="slider__item">
-                        <span class="slider__num">03</span>
-                        Контакти
-                    </div>
-                    <div class="slider__item">
-                        <span class="slider__num">04</span>
-                        Інше
-                    </div>
+                <div class="slider__item">
+                    <span class="slider__num">02</span>
+                    Послуги
+                </div>
+                <div class="slider__item">
+                    <span class="slider__num">03</span>
+                    Контакти
+                </div>
+                <div class="slider__item">
+                    <span class="slider__num">04</span>
+                    Інше
                 </div>
             </div>
         </div>

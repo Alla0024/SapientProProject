@@ -1,3 +1,4 @@
+<div class="container">
 <?php
 session_start();
 require_once("config/db.php");
@@ -14,3 +15,5 @@ if (isset($_GET["action"]) && file_exists("views/" . $_GET['action'] . ".php")) 
     require_once("views/404.php");
 }
 require_once("layout/footer.php");
+?>
+</div>

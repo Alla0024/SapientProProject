@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
         $_SESSION["id"] = $hash['id'];
         //echo "Success!";
         User::updateUserLoginAttempts(-1, $hash['login'], time(), $mysqli);
-        require_once("views/main.php");
+        header('Location: index.php?action=about');
         exit();
     } else {
         User::updateUserLoginAttempts($hash['login_attempts'], $hash['login'], time(), $mysqli);
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 <div class="login">
     <div class="container2">
         <div class="preg2">
-            <form action="" method="POST">
+            <form action="" class="form" method="POST">
                 <div class="dws-input">
                     <input type="text" name="username" placeholder="Введіть логін">
                 </div>

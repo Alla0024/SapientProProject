@@ -1,48 +1,32 @@
 <?php
+
 $error['errors'] = [];
+$edit_id = $_GET['bid-id'];
 if (isset($_POST['submit'])) {
     $class = isset($_POST['class']) ? $_POST['class'] : '';
     $subject = isset($_POST['subject']) ? $_POST['subject'] : '';
     $study = isset($_POST['formstudy']) ? $_POST['formstudy'] : '';
     $time = isset($_POST['time']) ? ($_POST['time']) : '';
     $other = isset($_POST['other']) ? ($_POST['other']) : '';
-
-    if (!$class || !$subject || !$study) {
-        array_push($error['errors'], "Не всі поля заповнені");
-    }
-    // if (Valid::validateInput($time, '/^[a-zA-Zа-яА-ЯієїІЄЇґҐ0-9\-\'\_\ \.\,\:\;]{0,}$/', "Не коректно записано час та дату!")) {
-        // array_push($error['errors'], "Не коректно записано час та дату! ");
-    // }
-    // if (Valid::validateInput($other, '/^[a-zA-Zа-яА-ЯієїІЄЇґҐ0-9\-\'\_\ \.\,\:\;]{0,}$/', "Не коректно записано побажання щодо занять!")) {
-        // array_push($error['errors'], "Не коректно записано побажання щодо занять! ");
-    // }
     if (empty($error['errors'])) {
-        Bid::addBid($class, $subject, $study, $time, $other, $mysqli);
-        header('Location: index.php?action=welcomebid');
+        Bid::updateBidsEdit($class, $subject, $study, $time, $other, $edit_id);
+        header('Location: index.php?action=grups');
     } else {
         header('Location: index.php?action=bids&' . http_build_query($error));
     }
 } else {
 ?>
     <div class="login3">
-        <?php
-        if (isset($_GET['errors'])) {
-            foreach ($_GET['errors'] as $key => $value) {
-                echo $value . ' ';
-            }
-        }
-        $class_name = isset($_GET['class-name']) ? ($_GET['class-name']) : '';
-        $class_id = isset($_GET['class-id']) ? ($_GET['class-id']) : '';
-
-
-        ?>
-        <div class="container3">
+    <?php
+    $edit = Bid::getBidById($edit_id);
+    ?>
+    <div class="container3">
             <div class="preg2">
                 <form action="" method="POST" class="form">
                     <div class="dws-input">
                         <select class="test" name="class">
-                            <?php if ($class_id) { ?>
-                                <option value=<?= $class_id ?>><?= $class_name ?></option>
+                            <?php if ($edit) { ?>
+                                <option value=<?= $edit['class_id'] ?>><?=$edit['class']?></option>
                             <?php } else { ?>
                                 <option disabled selected>--Клас--</option>
                             <?php }
@@ -53,8 +37,8 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="dws-input">
                         <select class="test" name="subject">
-                        <?php if ($class_id) { ?>
-                                <option value=<?=3 ?>>Математика</option>
+                        <?php if ($edit) { ?>
+                                <option value=<?=$edit['subject_id']?>><?=$edit['subjects']?></option>
                             <?php } else { ?>
                                 <option disabled selected>--Предмет--</option>
                             <?php }
@@ -67,8 +51,8 @@ if (isset($_POST['submit'])) {
 
                     <div class="dws-input">
                         <select class="test" name="formstudy">
-                            <?php if ($class_id) { ?>
-                                <option value=2>Група</option>
+                            <?php if ($edit) { ?>
+                                <option value=<?=$edit['form_study_id']?>><?=$edit['study']?></option>
                             <?php } else { ?>
                                 <option disabled selected>--Форма занять--</option>
                             <?php }
@@ -76,16 +60,15 @@ if (isset($_POST['submit'])) {
                             foreach ($formstudy as $elem) {
                             ?> <option value="<?= $elem[0] ?>"><?= $elem[1] ?></option> <?php
                                                                                     }
-
                                                                                         ?>
                         </select>
                     </div>
                     <div class="dws-input">
-                        <input type="text" name="time" placeholder="Бажанні дні та час занять">
+                        <input id="timetable" type="text" name="time" placeholder="Бажанні дні та час занять">
                     </div>
 
                     <div class="dws-input">
-                        <textarea style="width: 90%; height:100px; font-size:12px" type="text" name="other" placeholder="Інші побажаня"></textarea>
+                        <textarea style="width: 90%; height:100px; font-size:12px" type="text" name="other" placeholder="Інші побажаня"><?=$edit['other']?></textarea>
                     </div>
 
                     <input class="dws-submit" type="submit" name="submit" value="Надіслати">
@@ -93,4 +76,7 @@ if (isset($_POST['submit'])) {
                 </form>
             </div>
         </div>
+        <script type="text/javascript">
+        document.getElementById('timetable').value = '<?=$edit['timetable']?>';
+    </script>
     <?php } ?>

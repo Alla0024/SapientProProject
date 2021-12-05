@@ -8,9 +8,7 @@ if (isset($_POST['submit'])) {
     $password2 = isset($_POST['password2']) ? ($_POST['password2']) : '';
     $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
     $country = isset($_POST['country']) ? $_POST['country'] : '';
-    // if (!preg_match('/^([a-zA-Z]+(?:(?! {2})[a-zA-Z\'\-])*[a-zA-Z]+)$|^([а-яА-ЯієїІЄЇґҐ]+(?:(?! {2})[а-яА-ЯієїІЄЇґҐ\'\-])*[а-яА-ЯієїІЄЇґҐ]+)$/', $name) && $name) {
-    //     array_push($error['errors'], "Не коректно введено ім'я!");
-    // }
+    
     if (Valid::validateInput($name, '/^([a-zA-Z]+(?:(?! {2})[a-zA-Z\'\-])*[a-zA-Z]+)$|^([а-яА-ЯієїІЄЇґҐ]+(?:(?! {2})[а-яА-ЯієїІЄЇґҐ\'\-])*[а-яА-ЯієїІЄЇґҐ]+)$/', "Не коректно введено ім'я!")){
         array_push($error['errors'], "Не коректно введено ім'я!");
     }

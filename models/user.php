@@ -31,7 +31,7 @@ VALUES (?, ?, ?, ?, ?, ?)");
 
     public static function updateUserLoginAttempts($loginAttempts, $login, $currentDate, $mysqli)
     {
-        $stmt = $mysqli->prepare("UPDATE `users`    SET `login_attempts`=?, `last_login_attemps`=? WHERE `login`=?");
+        $stmt = $mysqli->prepare("UPDATE `users` SET `login_attempts`=?, `last_login_attemps`=? WHERE `login`=?");
 
         $loginAttempts++;
 
