@@ -8,14 +8,9 @@ if (isset($_POST['submit'])) {
     $other = isset($_POST['other']) ? ($_POST['other']) : '';
 
     if (!$class || !$subject || !$study) {
-        array_push($error['errors'], "Не всі поля заповнені");
+        array_push($error['errors'], "Не всі поля заповнені!");
     }
-    // if (Valid::validateInput($time, '/^[a-zA-Zа-яА-ЯієїІЄЇґҐ0-9\-\'\_\ \.\,\:\;]{0,}$/', "Не коректно записано час та дату!")) {
-        // array_push($error['errors'], "Не коректно записано час та дату! ");
-    // }
-    // if (Valid::validateInput($other, '/^[a-zA-Zа-яА-ЯієїІЄЇґҐ0-9\-\'\_\ \.\,\:\;]{0,}$/', "Не коректно записано побажання щодо занять!")) {
-        // array_push($error['errors'], "Не коректно записано побажання щодо занять! ");
-    // }
+
     if (empty($error['errors'])) {
         Bid::addBid($class, $subject, $study, $time, $other, $mysqli);
         header('Location: index.php?action=welcomebid');

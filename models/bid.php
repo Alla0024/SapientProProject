@@ -16,6 +16,14 @@ class Bid
         $class->execute();
         return $class->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+    public static function getAllClassWithPagination($limit, $offset)
+    {
+        $mysqli = dbConnect();
+        $class = $mysqli->prepare("SELECT id, class, description FROM class LIMIT ? OFFSET ?");
+        $class->bind_param("ss", $limit, $offset);
+        $class->execute();
+        return $class->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
     public static function getAllSubject()
     {
         $mysqli = dbConnect();
@@ -66,5 +74,12 @@ class Bid
         $class->bind_param("s", $class_id);
         $class->execute();
         return $class->get_result()->fetch_assoc();
+    }
+    public static function countRow()
+    {
+        $mysqli = dbConnect();
+        $count_row = $mysqli->prepare("SELECT COUNT(*) FROM `class`");
+        $count_row->execute();
+        return $count_row->get_result()->fetch_row()[0];
     }
 }

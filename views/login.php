@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
         $_SESSION['username'] = $username;
         $_SESSION['is_admin'] = $is_admin;
         $_SESSION["id"] = $hash['id'];
-        //echo "Success!";
         User::updateUserLoginAttempts(-1, $hash['login'], time(), $mysqli);
         header('Location: index.php?action=about');
         exit();
@@ -23,7 +22,7 @@ if (isset($_POST['submit'])) {
         if ($user['login_attempts'] > 4) {
             echo "Повторіть спроби через 5 хвилин!";
         } else {
-            echo "INVALID USERNAME/PASSWORD Combination!";
+            echo "Неправильно введено пароль або логін!";
         }
     }
 }

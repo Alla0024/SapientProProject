@@ -457,3 +457,8 @@ select:required:invalid {
     color: #523004;
     text-decoration: none;
 }
+
+.page-link {
+    color: white !important;
+    background-color: #523004 !important;
+}
