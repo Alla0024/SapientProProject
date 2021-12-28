@@ -448,6 +448,11 @@ select:required:invalid {
     text-align: center;
 }
 
+.class-detail > img {
+    width: 500px;
+    height: auto;
+}
+
 .card a {
     color: #FFFFFF;
     text-decoration: none;
@@ -462,3 +467,4 @@ select:required:invalid {
     color: white !important;
     background-color: #523004 !important;
 }
+

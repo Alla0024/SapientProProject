@@ -19,7 +19,7 @@ class Bid
     public static function getAllClassWithPagination($limit, $offset)
     {
         $mysqli = dbConnect();
-        $class = $mysqli->prepare("SELECT id, class, description FROM class LIMIT ? OFFSET ?");
+        $class = $mysqli->prepare("SELECT id, class, description, image FROM class LIMIT ? OFFSET ?");
         $class->bind_param("ss", $limit, $offset);
         $class->execute();
         return $class->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -70,7 +70,7 @@ class Bid
     public static function getClassById($class_id)
     {
         $mysqli = dbConnect();
-        $class = $mysqli->prepare("SELECT id, class, description FROM `class` WHERE id=?;");
+        $class = $mysqli->prepare("SELECT id, class, image, description FROM `class` WHERE id=?;");
         $class->bind_param("s", $class_id);
         $class->execute();
         return $class->get_result()->fetch_assoc();
@@ -82,4 +82,27 @@ class Bid
         $count_row->execute();
         return $count_row->get_result()->fetch_row()[0];
     }
+    public static function getNumbersOfCard()
+    {
+        $mysqli = dbConnect();
+        $number = $mysqli->prepare("SELECT id, number, description FROM numbersofcard");
+        $number->execute();
+        return $number->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+public static function addImg($img, $id)
+{
+    $mysqli = dbConnect();
+     $stmt = $mysqli->prepare("UPDATE class SET image = ? WheRE id=?");
+     $stmt->bind_param("ss", $img, $id);
+    $stmt->execute();
+} 
+public static function getAllImages()
+{
+    $mysqli = dbConnect();
+    $images = $mysqli->prepare("SELECT * FROM images ORDER BY id DESC");
+    $images->execute();
+    return $images->get_result()->fetch_all(MYSQLI_ASSOC);
+}
+
+    
 }

@@ -5,6 +5,8 @@
 
             <nav class="nav">
                 <a class="nav__link" href="index.php?action=about">Про нас</a>
+                <a class="nav__link" href="index.php?action=blog">Блог</a>
+                <a class="nav__link" href="index.php?action=creatingarticles">Створення статей</a>
                 <a class="nav__link" href="index.php?action=all-groups">Групи</a>
                 <?php
                 if (!isset($_SESSION["Logged"])) {
