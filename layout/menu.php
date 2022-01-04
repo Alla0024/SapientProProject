@@ -5,8 +5,6 @@
 
             <nav class="nav">
                 <a class="nav__link" href="index.php?action=about">Про нас</a>
-                <a class="nav__link" href="index.php?action=blog">Блог</a>
-                <a class="nav__link" href="index.php?action=creatingarticles">Створення статей</a>
                 <a class="nav__link" href="index.php?action=all-groups">Групи</a>
                 <?php
                 if (!isset($_SESSION["Logged"])) {
@@ -15,9 +13,9 @@
                 <?php } ?>
 
                 <a class="nav__link" href="index.php?action=bids">Заявка</a>
-                <?php if (isset($_SESSION["Logged"]) && $_SESSION['is_admin']['admin'] == 1) { ?>
-                    <a class="nav__link" href="index.php?action=grups">Керування заявками</a>
-                <?php } ?>
+                <?php if (isset($_SESSION["Logged"]) && $_SESSION['is_admin']['admin'] == 1) { 
+                    header('Location: index_admin.php');
+             } ?>
                 <?php
                 if (isset($_SESSION["Logged"])) {
                 ?>

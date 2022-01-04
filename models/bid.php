@@ -82,13 +82,8 @@ class Bid
         $count_row->execute();
         return $count_row->get_result()->fetch_row()[0];
     }
-    public static function getNumbersOfCard()
-    {
-        $mysqli = dbConnect();
-        $number = $mysqli->prepare("SELECT id, number, description FROM numbersofcard");
-        $number->execute();
-        return $number->get_result()->fetch_all(MYSQLI_ASSOC);
-}
+    
+
 public static function addImg($img, $id)
 {
     $mysqli = dbConnect();
